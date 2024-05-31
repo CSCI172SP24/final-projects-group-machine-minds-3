@@ -1,7 +1,7 @@
-# Basic Robot Movement - Machine Minds
+# Group Project - Final - Machine Minds
 
 ## Link to slides
-https://docs.google.com/presentation/d/14caJ_1ZJKjj1uy_TKactwN9OeA_oFbVfu9nkHamnfnU/edit?usp=sharing
+https://docs.google.com/presentation/d/1hcUatwnTb_Jt8qYY_E0cmD1dE1vI0Ov38E-occ2F1qs/edit?usp=sharing
 
 ## IR Reception - Receiver/Remote Interaction
 A typical IR remote consists of buttons that send hex data to an IR transmitter (looks like clear LED). Each button has a unique hex code that can be decoded by an IR receiver to mean whatever the user desires, including simply the label printed on the buttons of the IR remote.
