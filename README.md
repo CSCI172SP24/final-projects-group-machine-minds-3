@@ -26,7 +26,8 @@ https://docs.google.com/presentation/d/1hcUatwnTb_Jt8qYY_E0cmD1dE1vI0Ov38E-occ2F
 *Tasks*: Implement IR remote control logic. \
 *Finished*: ✔ \
 *Contribution*: ★★★ \
-*Communication*: ★★★
+*Communication*: ★★★ \
+*Challenges*: Interacting with global variables (use returns).
 ### IR Reception - Receiver/Remote Interaction
 A typical IR remote consists of buttons that send hex data to an IR transmitter (looks like clear LED). Each button has a unique hex code that can be decoded by an IR receiver to mean whatever the user desires, including simply the label printed on the buttons of the IR remote. \
 ### IR Reception - Command Logic
@@ -94,8 +95,8 @@ void irMoveCMD(int received){
 *Tasks*: Initialization Code and code review. \
 *Finished*: ✔ \
 *Contribution*: ★★★ \
-*Communication*: ★★★
-
+*Communication*: ★★★ \
+*Challenges*: Sourcing IR remote codes (google). Naming conventions (group discussion).
 ### Initialization Code - IR Remote Button Declarations
 Initialize the preprocessor commands mapped to the buttons on our IR remote.
 ```c++
@@ -177,7 +178,8 @@ void setup(){
 *Tasks*: Robot Assembly and movement functions. \
 *Finished*: ✔ \
 *Contribution*: ★★★ \
-*Communication*: ★★★
+*Communication*: ★★★ \
+*Challenges*: Servo displacing ultrasonic sensor (disconnect it).
 ### Robot Movement - Functions
 Declare functions to move the robot forward, left, right, back,back left, back right.
 ```c++
@@ -245,7 +247,8 @@ void moveSetSpd(int left_spd,int right_spd){
 *Tasks*: Obstacle avoidance with ultrasonic sensor, documentation, and main loop. \
 *Finished*: ✔ \
 *Contribution*: ★★★ \
-*Communication*: ★★★
+*Communication*: ★★★ \
+*Challenges*: Setting obstacle reaction (trial & error). Keeping loop function clean (group discussion).
 ### Object Avoidance - Ultrasonic Sensor
 Get distance from ultrasonic sensor.
 ```c++
@@ -316,7 +319,8 @@ void loop(){
 *Tasks*: Buzzer Sensor and user interaction. \
 *Finished*: ✔ \
 *Contribution*: ★★★ \
-*Communication*: ★★★
+*Communication*: ★★★ \
+*Challenges*: Determining when/how to buzz (group discussion, trial & error).
 ### Buzzer Functionality
 Declare functions to stop robot movement and to set the speed of the motors.
 ```c++
@@ -338,7 +342,8 @@ void disableBuzzer(){
 *Tasks*: Object following/avoidance with IR distance Sensor. \
 *Finished*: ✔ \
 *Contribution*: ★★★ \
-*Communication*: ★★★
+*Communication*: ★★★ \
+*Challenges*: Covering edge cases (trial & error). Setting obstacle/follow reaction (trial & error).
 ### Object Avoidance - IR Sensors
 Get distance from ultrasonic sensor.
 ```c++
@@ -384,122 +389,6 @@ void irPairsAvoidObject(int leftIRPairValue, int rightIRPairValue){
   }
 }
 ```
-
-<!---
-## Robot Introduction
-#### Physical Programming Framework 
-+ Four wheels
-+ Four motors
-+ Arduino UNO3
-+ Acrylic chassis
-+ Sensors
-
-## Purpose of Robot
-#### Experience Gain:
-+ Sensors
-+ Electronics
-+ Programming
-#### Physical Programming Framework
-+ The physicality of the robot forces us to adapt our code to work in real life scenarios
-
-## Hardware Components Descriptions
-<table>
-    <tr>
-        <td>Arduino UNO3 board</td>
-        <td>Controls motor driver and logic of robot</td>
-    </tr>
-    <tr>
-        <td>MODEL-X Motor driver</td>
-        <td>Sets/toggles motor speed/direction</td>
-    </tr>
-    <tr>
-        <td>Four DC motors</td>
-        <td>Move the wheels of the robot</td>
-    </tr>
-    <tr>
-        <td>Four wheels</td>
-        <td>Move the robot based on the motor driver</td>
-    </tr>
-    <tr>
-        <td>Jumper wires</td>
-        <td>Connect peripherals, drivers, and arduino board</td>
-    </tr>
-    <tr>
-        <td>Battery pack</td>
-        <td>Powers the robot</td>
-    </tr>
-    <tr>
-        <td>Chassis</td>
-        <td>Holds all components in place</td>
-    </tr>
-    <tr>
-        <td>Mounting hardware</td>
-        <td>Affixes components to chassis</td>
-    </tr>
-</table>
-
-## Code Summary and Functions
-+ Our code moves our robot in a square over the duration of about 6 seconds.
-+ We had to change timing on turning and moving to account for our testing environment.
-<table>
-    <tr>
-        <td>go_Advance()</td>
-        <td>Moves robot forward</td>
-    </tr>
-    <tr>
-        <td>stop_Stop()</td>
-        <td>Stops robot movement</td>
-    </tr>
-    <tr>
-        <td>go_Back()</td>
-        <td>Moves robot backwards for t ms</td>
-    </tr>
-    <tr>
-        <td>turn_Left(int t)</td>
-        <td>Moves robot left for t ms</td>
-    </tr>
-    <tr>
-        <td>turn_Right(int t)</td>
-        <td>Moves robot right for t ms</td>
-    </tr>
-    <tr>
-        <td>set_Motorspeed(int speed_L, int speed_R)</td>
-        <td>Sets left/right motors speeds</td>
-    </tr>
-</table>
-
-```c++
-void move_in_square(){          // move robot in square in ~6 sec
-  set_Motorspeed(SPEED, SPEED); // set speed to 190
-  for(int i = 0; i < 4; i++){   // loop following code 4 times
-    go_Advance();               // move forward
-    delay(MOVE_TIME);           // keep moving forward for 1 sec
-    turn_Right(TURN_TIME);      // turn right for 600 ms
-    stop_Stop();                // stop robot movement each time
-  }
-}
-```
-
-## Demo
-See _demo.mp4_
-
-## Added Functionalities
-+ We added code that spins the robot in a circle for about 5 seconds.
-+ The loops and turn times are arbitrarily set to visually see the robot spin.
-+ Spinning in a circle can be used to gather 360° perception data.
-+ This could also allow the robot to draw a circle (if we attached a marker).
-
-```c++
-void move_in_circle(){          // spin robot for ~5 sec
-  set_Motorspeed(SPEED, SPEED); // set speed to 190
-  for(int i = 0; i < 4; i++){   // loop following code 4 times
-    turn_Right(TURN_TIME*8);    // turn right for ~5 sec
-  }
-  stop_Stop();                  // stop robot movement after loop
-}
-```
-
--->
 
 ## Contributors
 <table>
