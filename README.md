@@ -29,7 +29,7 @@ https://docs.google.com/presentation/d/1hcUatwnTb_Jt8qYY_E0cmD1dE1vI0Ov38E-occ2F
 *Communication*: ★★★ \
 *Challenges*: Interacting with global variables (use returns).
 ### IR Reception - Receiver/Remote Interaction
-A typical IR remote consists of buttons that send hex data to an IR transmitter (looks like clear LED). Each button has a unique hex code that can be decoded by an IR receiver to mean whatever the user desires, including simply the label printed on the buttons of the IR remote. \
+A typical IR remote consists of buttons that send hex data to an IR transmitter (looks like clear LED). Each button has a unique hex code that can be decoded by an IR receiver to mean whatever the user desires, including simply the label printed on the buttons of the IR remote.
 ### IR Reception - Command Logic
 + Maps "▲" to move the robot forward
 + Maps "▼" to move the robot backwards
@@ -322,7 +322,7 @@ void loop(){
 *Communication*: ★★★ \
 *Challenges*: Determining when/how to buzz (group discussion, trial & error).
 ### Buzzer Functionality
-Declare functions to stop robot movement and to set the speed of the motors.
+Declare functions to enable the buzzer (and buzz) and to disable to buzzer.
 ```c++
 void enableBuzzer(){
   for(int b = 0; b < 10; b++){
@@ -345,7 +345,7 @@ void disableBuzzer(){
 *Communication*: ★★★ \
 *Challenges*: Covering edge cases (trial & error). Setting obstacle/follow reaction (trial & error).
 ### Object Avoidance - IR Sensors
-Get distance from ultrasonic sensor.
+Check different states of left/right IR sensor pairs and react accordingly.
 ```c++
 void irPairsFollowObject(int leftIRPairValue, int rightIRPairValue){
   if((leftIRPairValue == LOW) && (rightIRPairValue == LOW)){
@@ -363,7 +363,7 @@ void irPairsFollowObject(int leftIRPairValue, int rightIRPairValue){
 }
 ```
 ### Object Avoidance - Object Following
-Use distance from ultrasonic sensor to keep car safe if too close to wall.
+Check different states of left/right IR sensor pairs and react accordingly.
 ```c++
 void irPairsAvoidObject(int leftIRPairValue, int rightIRPairValue){
   if((leftIRPairValue == LOW) && (rightIRPairValue == LOW) && (irPairsFollowObjectFlag == LOW) && (lockFlag == LOW)){
