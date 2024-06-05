@@ -25,8 +25,8 @@ https://docs.google.com/presentation/d/1hcUatwnTb_Jt8qYY_E0cmD1dE1vI0Ov38E-occ2F
 ## Anna Wilson: Group Role and Tasks
 *Tasks*: Implement IR remote control logic. \
 *Finished*: ✔ \
-*Contribution*: ★★★ \
-*Communication*: ★★★ \
+*Contribution*: 5/5 \
+*Communication*: 5/5 \
 *Challenges*: Interacting with global variables (use returns).
 ### IR Reception - Receiver/Remote Interaction
 A typical IR remote consists of buttons that send hex data to an IR transmitter (looks like clear LED). Each button has a unique hex code that can be decoded by an IR receiver to mean whatever the user desires, including simply the label printed on the buttons of the IR remote.
@@ -94,8 +94,8 @@ void irMoveCMD(int received){
 ## Chase Lafaurie: Group Role and Tasks
 *Tasks*: Initialization Code and code review. \
 *Finished*: ✔ \
-*Contribution*: ★★★ \
-*Communication*: ★★★ \
+*Contribution*: 5/5 \
+*Communication*: 5/5 \
 *Challenges*: Sourcing IR remote codes (google). Naming conventions (group discussion).
 ### Initialization Code - IR Remote Button Declarations
 Initialize the preprocessor commands mapped to the buttons on our IR remote.
@@ -177,8 +177,8 @@ void setup(){
 ## Gracy Conrad: Group Role and Tasks
 *Tasks*: Robot Assembly and movement functions. \
 *Finished*: ✔ \
-*Contribution*: ★★★ \
-*Communication*: ★★★ \
+*Contribution*: 5/5 \
+*Communication*: 5/5 \
 *Challenges*: Servo displacing ultrasonic sensor (disconnect it).
 ### Robot Movement - Functions
 Declare functions to move the robot forward, left, right, back,back left, back right.
@@ -246,8 +246,8 @@ void moveSetSpd(int left_spd,int right_spd){
 ## Jonah Duncan: Group Role and Tasks
 *Tasks*: Obstacle avoidance with ultrasonic sensor, documentation, and main loop. \
 *Finished*: ✔ \
-*Contribution*: ★★★ \
-*Communication*: ★★★ \
+*Contribution*: 5/5 \
+*Communication*: 5/5 \
 *Challenges*: Setting obstacle reaction (trial & error). Keeping loop function clean (group discussion).
 ### Object Avoidance - Ultrasonic Sensor
 Get distance from ultrasonic sensor.
@@ -318,8 +318,8 @@ void loop(){
 ## Sam Richardson: Group Role and Tasks
 *Tasks*: Buzzer Sensor and user interaction. \
 *Finished*: ✔ \
-*Contribution*: ★★★ \
-*Communication*: ★★★ \
+*Contribution*: 5/5 \
+*Communication*: 5/5 \
 *Challenges*: Determining when/how to buzz (group discussion, trial & error).
 ### Buzzer Functionality
 Declare functions to enable the buzzer (and buzz) and to disable to buzzer.
@@ -341,8 +341,8 @@ void disableBuzzer(){
 ## Vincent Tang: Group Role and Tasks
 *Tasks*: Object following/avoidance with IR distance Sensor. \
 *Finished*: ✔ \
-*Contribution*: ★★★ \
-*Communication*: ★★★ \
+*Contribution*: 5/5 \
+*Communication*: 5/5 \
 *Challenges*: Covering edge cases (trial & error). Setting obstacle/follow reaction (trial & error).
 ### Object Avoidance - IR Sensors
 Check different states of left/right IR sensor pairs and react accordingly.
