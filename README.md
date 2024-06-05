@@ -44,23 +44,33 @@ A typical IR remote consists of buttons that send hex data to an IR transmitter 
 void irMoveCMD(int received){
   switch(received){
     case IR_BTN_UP:{
-      moveForward();
+      if(lockFlag == LOW){
+        moveForward();
+      }
       break;
     }
     case IR_BTN_DOWN:{
-      moveBack();
+      if(lockFlag == LOW){
+        moveBack();
+      }
       break;
     }
     case IR_BTN_RIGHT:{
-      moveRight();
+      if(lockFlag == LOW){
+        moveRight();
+      }
       break;
     }
     case IR_BTN_LEFT:{
-      moveLeft();
+      if(lockFlag == LOW){
+        moveLeft();
+      }
       break;
     }
     case IR_BTN_OK:{
-      moveStop();
+      if(lockFlag == LOW){
+        moveStop();
+      }
       break;
     }
     case IR_BTN_STAR:{
