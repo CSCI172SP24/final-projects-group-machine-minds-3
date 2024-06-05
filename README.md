@@ -3,6 +3,15 @@
 ## Link to slides
 https://docs.google.com/presentation/d/1hcUatwnTb_Jt8qYY_E0cmD1dE1vI0Ov38E-occ2F1qs/edit?usp=sharing
 
+## Inspiration
+Coconut: 
+
+![coconut](https://github.com/CSCI172SP24/final-projects-group-machine-minds-3/assets/5532247/231b37ad-ce5d-4516-a867-2fdd06567f1d)
++ cat
++ beeps
++ scampers
++ avoidant
+
 ## Objectives - Safe Cat Car
 + Front object avoidance via ultrasonic sensor
 + Rear object avoidance via IR pair sensors
