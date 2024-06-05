@@ -39,7 +39,7 @@ A typical IR remote consists of buttons that send hex data to an IR transmitter 
 + Maps "*" to lock the robot preventing further commands until unlocked and beep once
 + Maps "#" to unlock the robot enabling further commands until locked and beeps twice
 + Maps "0" to toggle object following
-+ Default that does nothing to catch any other codes
++ Maps “8” to make the cat car scream
 ```c++
 void irMoveCMD(int received){
   switch(received){
@@ -92,6 +92,15 @@ void irMoveCMD(int received){
         irPairsFollowObjectFlag = !irPairsFollowObjectFlag;
         enableBuzzer();
         return irPairsFollowObjectFlag;
+      }
+      break;
+    }
+    case IR_BTN_8:{
+      // Scream
+      if(lockFlag == LOW){
+        for(int b = 0; b < 25; b++){
+          enableBuzzer();
+        }
       }
       break;
     }
@@ -259,7 +268,7 @@ void moveSetSpd(int left_spd,int right_spd){
 *Finished*: ✔ \
 *Contribution*: 5/5 \
 *Communication*: 5/5 \
-*Challenges*: Setting obstacle reaction (trial & error). Keeping loop function clean (group discussion).
+*Challenges*: Obstacle avoidance logic (trial & error). Keeping loop function clean (group discussion).
 ### Object Avoidance - Ultrasonic Sensor
 Get distance from ultrasonic sensor.
 ```c++
@@ -286,11 +295,7 @@ Use distance from ultrasonic sensor to keep car safe if too close to wall.
 ```c++
 void ultrasonicAvoidObject(long distance){
   if((distance < 10) && (lockFlag == LOW)){
-    enableBuzzer();
-    moveStop();
-    moveBack();
-    delay(250);
-    moveStop();
+    frontAvoidReaction();
   }
 }
 ```
@@ -332,7 +337,7 @@ void loop(){
 *Contribution*: 5/5 \
 *Communication*: 5/5 \
 *Challenges*: Determining when/how to buzz (group discussion, trial & error).
-### Buzzer Functionality
+### Buzzer - Functionality
 Declare functions to enable the buzzer (and buzz) and to disable to buzzer.
 ```c++
 void enableBuzzer(){
@@ -348,13 +353,32 @@ void disableBuzzer(){
   digitalWrite(BUZZER_PIN, HIGH);
 }
 ```
+### Buzzer - Avoidance Reactions
+Declare functions for buzzer/avoidance reactions.
+```c++
+void frontAvoidReaction(){
+  enableBuzzer();
+  moveStop();
+  moveBack();
+  delay(250);
+  moveStop();
+}
+
+void backAvoidReaction(){
+  enableBuzzer();
+  moveStop();
+  moveForward();
+  delay(250);
+  moveStop();
+}
+```
 
 ## Vincent Tang: Group Role and Tasks
 *Tasks*: Object following/avoidance with IR distance Sensor. \
 *Finished*: ✔ \
 *Contribution*: 5/5 \
 *Communication*: 5/5 \
-*Challenges*: Covering edge cases (trial & error). Setting obstacle/follow reaction (trial & error).
+*Challenges*: Covering edge cases (trial & error). Setting follow reaction (trial & error).
 ### Object Avoidance - IR Sensors
 Check different states of left/right IR sensor pairs and react accordingly.
 ```c++
@@ -378,25 +402,13 @@ Check different states of left/right IR sensor pairs and react accordingly.
 ```c++
 void irPairsAvoidObject(int leftIRPairValue, int rightIRPairValue){
   if((leftIRPairValue == LOW) && (rightIRPairValue == LOW) && (irPairsFollowObjectFlag == LOW) && (lockFlag == LOW)){
-   enableBuzzer();
-   moveStop();
-   moveForward();
-   delay(250);
-   moveStop();
+    backAvoidReaction();
   }
   else if((leftIRPairValue == LOW) && (rightIRPairValue == HIGH) && (irPairsFollowObjectFlag == LOW) && (lockFlag == LOW)){
-   enableBuzzer();
-   moveStop();
-   moveForward();
-   delay(250);
-   moveStop();
+    backAvoidReaction();
   }
   else if((leftIRPairValue == HIGH) && (rightIRPairValue == LOW) && (irPairsFollowObjectFlag == LOW) && (lockFlag == LOW)){
-   enableBuzzer();
-   moveStop();
-   moveForward();
-   delay(250);
-   moveStop();
+    backAvoidReaction();
   }
 }
 ```
