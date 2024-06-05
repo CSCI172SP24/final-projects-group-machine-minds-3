@@ -422,6 +422,9 @@ void irPairsAvoidObject(int leftIRPairValue, int rightIRPairValue){
 }
 ```
 
+## Thank you for your reading!
+![man](https://github.com/CSCI172SP24/final-projects-group-machine-minds-3/assets/5532247/32e8c436-f273-4b95-88d6-ff4d4f74bcf7)
+
 ## Contributors
 <table>
 <tbody>
