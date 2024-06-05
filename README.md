@@ -22,6 +22,7 @@ Coconut:
 + Lock/unlock functionality via IR remote
 + Buzzer to interface with user
 + Basic robot movement via IR remote
++ Line following via line following sensor
 
 ## Group Plan
 05/25/2024 - Robot movement initialization code shall be completed. Robot shall be fully constructed. \
@@ -30,9 +31,9 @@ Coconut:
 06/01/2024 - Obstacle avoidance shall be implemented. \
 06/02/2024 - Buzzer sensor logic shall be implemented. \
 06/03/2024 - Object following shall be implemented. \
-**06/05/2024** - **Final Group Presentation:** All robot features shall be implemented. \
-06/06/2024 - Add speed/turn controls to IR remote logic (optional). \
-**06/09/2024** - **Project Due:** All documentation and code shall be submitted.
+**06/05/2024** - **Final Group Presentation:** Almost robot features shall be implemented. \
+06/06/2024 - Add line following functionality. \
+**06/09/2024** - **Project Due:** All documentation and code shall be submitted/complete.
 
 ## Anna Wilson: Group Role and Tasks
 *Tasks*: Implement IR remote control logic. \
@@ -276,8 +277,8 @@ void moveSetSpd(int left_spd,int right_spd){
 ```
 
 ## Jonah Duncan: Group Role and Tasks
-*Tasks*: Obstacle avoidance with ultrasonic sensor, documentation, and main loop. \
-*Finished*: ✔ \
+*Tasks*: Obstacle avoidance with ultrasonic sensor, documentation, and main loop. Line following (doing after presentation). \
+*Finished*: ✔ (excluding line following - doing after presentation) \
 *Contribution*: 5/5 \
 *Communication*: 5/5 \
 *Challenges*: Obstacle avoidance logic (trial & error). Keeping loop function clean (group discussion).
