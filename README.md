@@ -15,6 +15,9 @@ Coconut:
 + scampers
 + avoidant
 
+## Problem
+We want to solve the problem of robot safety with our safe cat car. For safety it avoids obstacles, locks/unlocks, and can scream. It can also can move around and follow objects/lines (very well-behaved).
+
 ## Objectives - Safe Cat Car
 + Front object avoidance via ultrasonic sensor
 + Rear object avoidance via IR pair sensors
