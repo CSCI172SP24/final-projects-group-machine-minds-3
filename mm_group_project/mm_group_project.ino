@@ -165,6 +165,7 @@ bool irMoveCMD(int received){
     case IR_BTN_0:{
       if(lockFlag == LOW){
         irPairsFollowObjectFlag = !irPairsFollowObjectFlag;
+        enableBuzzer();
         return irPairsFollowObjectFlag;
       }
       break;
