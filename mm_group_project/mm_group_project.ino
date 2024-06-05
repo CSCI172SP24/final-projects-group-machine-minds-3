@@ -2,7 +2,7 @@
 * Anna Wilson, Chase Lafaurie, Gracy Conrad
 * Jonah Duncan, Sam Richardson, Vincent Tang 
 * 
-* 05/20/24
+* 05/20/24 - 06/05/24
 *
 * Machine Minds Group Project
 ************************************************/
@@ -170,6 +170,15 @@ bool irMoveCMD(int received){
       }
       break;
     }
+    case IR_BTN_8:{
+      // Scream
+      if(lockFlag == LOW){
+        for(int b = 0; b < 25; b++){
+          enableBuzzer();
+        }
+      }
+      break;
+    }
     /*
     case IR_BTN_1:{
       break;
@@ -190,9 +199,6 @@ bool irMoveCMD(int received){
       break;
     }
     case IR_BTN_7:{
-      break;
-    }
-    case IR_BTN_8:{
       break;
     }
     case IR_BTN_9:{
@@ -218,6 +224,22 @@ void disableBuzzer(){
   digitalWrite(BUZZER_PIN, HIGH);
 }
 
+void frontAvoidReaction(){
+  enableBuzzer();
+  moveStop();
+  moveBack();
+  delay(250);
+  moveStop();
+}
+
+void backAvoidReaction(){
+  enableBuzzer();
+  moveStop();
+  moveForward();
+  delay(250);
+  moveStop();
+}
+
 /* Sensor Logic */
 long getUltrasonicDistance(){
   // Send a 10 microsecond pulse to the Trigger pin
@@ -239,11 +261,7 @@ long getUltrasonicDistance(){
 
 void ultrasonicAvoidObject(long distance){
   if((distance < 10) && (lockFlag == LOW)){
-    enableBuzzer();
-    moveStop();
-    moveBack();
-    delay(250);
-    moveStop();
+    frontAvoidReaction();
   }
 }
 
@@ -264,30 +282,17 @@ void irPairsFollowObject(int leftIRPairValue, int rightIRPairValue){
 
 void irPairsAvoidObject(int leftIRPairValue, int rightIRPairValue){
   if((leftIRPairValue == LOW) && (rightIRPairValue == LOW) && (irPairsFollowObjectFlag == LOW) && (lockFlag == LOW)){
-   enableBuzzer();
-   moveStop();
-   moveForward();
-   delay(250);
-   moveStop();
+    backAvoidReaction();
   }
   else if((leftIRPairValue == LOW) && (rightIRPairValue == HIGH) && (irPairsFollowObjectFlag == LOW) && (lockFlag == LOW)){
-   enableBuzzer();
-   moveStop();
-   moveForward();
-   delay(250);
-   moveStop();
+    backAvoidReaction();
   }
   else if((leftIRPairValue == HIGH) && (rightIRPairValue == LOW) && (irPairsFollowObjectFlag == LOW) && (lockFlag == LOW)){
-   enableBuzzer();
-   moveStop();
-   moveForward();
-   delay(250);
-   moveStop();
+    backAvoidReaction();
   }
 }
 
 void setup(){
-
   /* Stop Buzzing ASAP */
   pinMode(BUZZER_PIN, OUTPUT);
   disableBuzzer();
