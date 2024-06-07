@@ -346,6 +346,103 @@ void loop(){
   delay(20);  // Wait for 20 ms
   }
 ```
+## Jonah Duncan: Post Presentation Task
+These are code snippets since the code is added in assorted places.
+### Line Following - Initialization
+I needed to keep track of the mode and the last line sensor value for upcoming logic. The rest is to cover all cases of sensor outputs.
+```c++
+/* Other Variables */
+bool lineFollowFlag = LOW;
+String last_line_sensor;
+```
+```c++
+/* Line Sensor Variations - 32 Total (2^5) */
+#define LINE_NONE_CASE_A          "00000"
+#define LINE_RIGHT                "00001"
+#define LINE_SLIGHT_RIGHT_CASE_A  "00010"
+#define LINE_SLIGHT_RIGHT_CASE_B  "00011"
+#define LINE_CENTER_CASE_A        "00100"
+#define LINE_SLIGHT_RIGHT_CASE_C  "00101"
+#define LINE_SLIGHT_RIGHT_CASE_D  "00110"
+#define LINE_SLIGHT_RIGHT_CASE_E  "00111"
+#define LINE_SLIGHT_LEFT_CASE_A   "01000"
+#define LINE_SLIGHT_RIGHT_CASE_F  "01001"
+#define LINE_SLIGHT_RIGHT_CASE_G  "01010"
+#define LINE_SLIGHT_RIGHT_CASE_H  "01011"
+#define LINE_SLIGHT_LEFT_CASE_B   "01100"
+#define LINE_SLIGHT_RIGHT_CASE_I  "01101"
+#define LINE_CENTER_CASE_B        "01110"
+#define LINE_SLIGHT_RIGHT_CASE_J  "01111"
+#define LINE_LEFT                 "10000"
+#define LINE_NONE_CASE_B          "10001"
+#define LINE_SLIGHT_LEFT_CASE_C   "10010"
+#define LINE_NONE_CASE_C          "10011"
+#define LINE_SLIGHT_LEFT_CASE_D   "10100"
+#define LINE_NONE_CASE_D          "10101"
+#define LINE_NONE_CASE_E          "10110"
+#define LINE_NONE_CASE_F          "10111"
+#define LINE_NONE_CASE_G          "11000"
+#define LINE_NONE_CASE_H          "11001"
+#define LINE_SLIGHT_LEFT_CASE_E   "11010"
+#define LINE_NONE_CASE_I          "11011"
+#define LINE_SLIGHT_LEFT_CASE_F   "11100"
+#define LINE_NONE_CASE_J          "11101"
+#define LINE_NONE_CASE_K          "11110"
+#define LINE_ALL                  "11111"
+```
+### Line Following - Function
+The following code converts inverted line sensor digital reads into a string and then compares them against the 32 cases we made, reacting differently based on the case.
+```c++
+void lineSensorFollowLine(){
+  /* Line sensor values come in inverted. So, we need to invert them to read them correctly. */
+  String line_sensor = (String)(!digitalRead(LINE_SENSOR_0)) + (String)(!digitalRead(LINE_SENSOR_1)) + (String)(!digitalRead(LINE_SENSOR_2)) + (String)(!digitalRead(LINE_SENSOR_3)) + (String)(!digitalRead(LINE_SENSOR_4)) + '\0';
+
+  if(line_sensor == LINE_CENTER_CASE_A || line_sensor == LINE_CENTER_CASE_B){
+    moveForward();
+  }
+
+  if(line_sensor == LINE_LEFT){
+    moveLeft();
+  }
+  if(line_sensor == LINE_SLIGHT_LEFT_CASE_A || line_sensor == LINE_SLIGHT_LEFT_CASE_B || line_sensor == LINE_SLIGHT_LEFT_CASE_C || line_sensor == LINE_SLIGHT_LEFT_CASE_D || line_sensor == LINE_SLIGHT_LEFT_CASE_E || line_sensor == LINE_SLIGHT_LEFT_CASE_F){
+    moveForward();
+    delay(100);
+    moveLeft();
+    moveStop();
+  }
+  if(line_sensor == LINE_RIGHT){
+    moveRight();
+  }
+  if(line_sensor == LINE_NONE_CASE_A || line_sensor == LINE_ALL){
+    if(last_line_sensor == LINE_RIGHT || last_line_sensor == LINE_SLIGHT_RIGHT_CASE_A || last_line_sensor == LINE_SLIGHT_RIGHT_CASE_B || last_line_sensor == LINE_SLIGHT_RIGHT_CASE_C || last_line_sensor == LINE_SLIGHT_RIGHT_CASE_D || last_line_sensor == LINE_SLIGHT_RIGHT_CASE_E || last_line_sensor == LINE_SLIGHT_RIGHT_CASE_F || last_line_sensor == LINE_SLIGHT_RIGHT_CASE_G || last_line_sensor == LINE_SLIGHT_RIGHT_CASE_H || last_line_sensor == LINE_SLIGHT_RIGHT_CASE_I || last_line_sensor == LINE_SLIGHT_RIGHT_CASE_J){
+      moveRight();
+    }
+    if(last_line_sensor == LINE_LEFT || last_line_sensor == LINE_SLIGHT_LEFT_CASE_A || last_line_sensor == LINE_SLIGHT_LEFT_CASE_B || last_line_sensor == LINE_SLIGHT_LEFT_CASE_C || last_line_sensor == LINE_SLIGHT_LEFT_CASE_D || last_line_sensor == LINE_SLIGHT_LEFT_CASE_E || last_line_sensor == LINE_SLIGHT_LEFT_CASE_F){
+      moveLeft();
+    }
+  }
+  if(line_sensor == LINE_SLIGHT_RIGHT_CASE_A || line_sensor == LINE_SLIGHT_RIGHT_CASE_B || line_sensor == LINE_SLIGHT_RIGHT_CASE_C || line_sensor == LINE_SLIGHT_RIGHT_CASE_D || line_sensor == LINE_SLIGHT_RIGHT_CASE_E || line_sensor == LINE_SLIGHT_RIGHT_CASE_F || line_sensor == LINE_SLIGHT_RIGHT_CASE_G || line_sensor == LINE_SLIGHT_RIGHT_CASE_H || line_sensor == LINE_SLIGHT_RIGHT_CASE_I || line_sensor == LINE_SLIGHT_RIGHT_CASE_J){
+    moveForward();
+    delay(100);
+    moveLeft();
+    moveStop();
+  }
+  if(line_sensor == LINE_NONE_CASE_B || line_sensor == LINE_NONE_CASE_C || line_sensor == LINE_NONE_CASE_D || line_sensor == LINE_NONE_CASE_E || line_sensor == LINE_NONE_CASE_F || line_sensor == LINE_NONE_CASE_G || line_sensor == LINE_NONE_CASE_H || line_sensor == LINE_NONE_CASE_I || line_sensor == LINE_NONE_CASE_J || line_sensor == LINE_NONE_CASE_K){
+    moveStop();
+  }
+  last_line_sensor = line_sensor;
+}
+```
+
+### Line Following - Loop Code
+Continuously follow line updating while updating last line value. Mode checking implemented.
+```c++
+void loop(){
+  if((lineFollowFlag == HIGH) && (irPairsFollowObjectFlag == LOW) && (lockFlag == LOW)){
+    lineSensorFollowLine();
+  }
+}
+```
 
 ## Sam Richardson: Group Role and Tasks
 *Tasks*: Buzzer Sensor and user interaction. \
