@@ -19,13 +19,13 @@ Coconut:
 We want to solve the problem of robot safety with our safe cat car. For safety it avoids obstacles, locks/unlocks, and can scream. It can also can move around and follow objects/lines (very well-behaved).
 
 ## Objectives - Safe Cat Car
-+ Front object avoidance via ultrasonic sensor
-+ Rear object avoidance via IR pair sensors
-+ Object following via IR pair sensors
-+ Lock/unlock functionality via IR remote
-+ Buzzer to interface with user
-+ Basic robot movement via IR remote
-+ Line following via line following sensor
++ Front object avoidance via ultrasonic sensor (distance indicates closeness -> avoid)
++ Rear object avoidance via IR pair sensors (any non-zero output indicates closeness -> avoid)
++ Object following via IR pair sensors (specific non-zero output indicates closeness -> follow)
++ Buzzer to interface with user (can be applied in many scenarios to mean different things)
++ Lock/unlock functionality via IR remote (simplest form of controlled user input)
++ Basic robot movement via IR remote (simplest form of controlled user input)
++ Line following via line following sensor (only way to accurately measure color on ground)
 
 ## Group Plan
 05/25/2024 - Robot movement initialization code shall be completed. Robot shall be fully constructed. \
