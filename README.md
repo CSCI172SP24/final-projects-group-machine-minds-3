@@ -280,8 +280,8 @@ void moveSetSpd(int left_spd,int right_spd){
 ```
 
 ## Jonah Duncan: Group Role and Tasks
-*Tasks*: Obstacle avoidance with ultrasonic sensor, documentation, and main loop. Line following (doing after presentation). \
-*Finished*: ✔ (excluding line following - doing after presentation) \
+*Tasks*: Obstacle avoidance with ultrasonic sensor, documentation, and main loop. Line following (done after presentation). \
+*Finished*: ✔ (line following done after presentation) \
 *Contribution*: 5/5 \
 *Communication*: 5/5 \
 *Challenges*: Obstacle avoidance logic (trial & error). Keeping loop function clean (group discussion).
