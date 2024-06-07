@@ -41,7 +41,7 @@ We want to solve the problem of robot safety with our safe cat car. For safety i
 ## Anna Wilson: Group Role and Tasks
 *Tasks*: Implement IR remote control logic. \
 *Finished*: ✔ \
-*Contribution*: 5/5 \
+*Contribution*: 16.65% \
 *Communication*: 5/5 \
 *Challenges*: Interacting with global variables (use returns).
 ### IR Reception - Receiver/Remote Interaction
@@ -130,7 +130,7 @@ void irMoveCMD(int received){
 ## Chase Lafaurie: Group Role and Tasks
 *Tasks*: Initialization Code and code review. \
 *Finished*: ✔ \
-*Contribution*: 5/5 \
+*Contribution*: 16.65% \
 *Communication*: 5/5 \
 *Challenges*: Sourcing IR remote codes (google). Naming conventions (group discussion).
 ### Initialization Code - IR Remote Button Declarations
@@ -213,7 +213,7 @@ void setup(){
 ## Gracy Conrad: Group Role and Tasks
 *Tasks*: Robot Assembly and movement functions. \
 *Finished*: ✔ \
-*Contribution*: 5/5 \
+*Contribution*: 16.65% \
 *Communication*: 5/5 \
 *Challenges*: Servo displacing ultrasonic sensor (disconnect it).
 ### Robot Movement - Functions
@@ -282,7 +282,7 @@ void moveSetSpd(int left_spd,int right_spd){
 ## Jonah Duncan: Group Role and Tasks
 *Tasks*: Obstacle avoidance with ultrasonic sensor, documentation, and main loop. Line following (done after presentation). \
 *Finished*: ✔ (line following done after presentation) \
-*Contribution*: 5/5 \
+*Contribution*: 16.75% \
 *Communication*: 5/5 \
 *Challenges*: Obstacle avoidance logic (trial & error). Keeping loop function clean (group discussion).
 ### Object Avoidance - Ultrasonic Sensor
@@ -447,7 +447,7 @@ void loop(){
 ## Sam Richardson: Group Role and Tasks
 *Tasks*: Buzzer Sensor and user interaction. \
 *Finished*: ✔ \
-*Contribution*: 5/5 \
+*Contribution*: 16.65% \
 *Communication*: 5/5 \
 *Challenges*: Determining when/how to buzz (group discussion, trial & error).
 ### Buzzer - Functionality
@@ -489,7 +489,7 @@ void backAvoidReaction(){
 ## Vincent Tang: Group Role and Tasks
 *Tasks*: Object following/avoidance with IR distance Sensor. \
 *Finished*: ✔ \
-*Contribution*: 5/5 \
+*Contribution*: 16.65% \
 *Communication*: 5/5 \
 *Challenges*: Covering edge cases (trial & error). Setting follow reaction (trial & error).
 ### Object Avoidance - IR Sensors
