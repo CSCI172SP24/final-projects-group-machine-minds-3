@@ -435,7 +435,7 @@ void lineSensorFollowLine(){
 ```
 
 ### Line Following - Loop Code
-Continuously follow line updating while updating last line value. Mode checking implemented.
+Continuously follow line updating while updating last line value. This last value logic helps the car remember what direction it was last moving to accurately get back to that direction. Mode checking implemented.
 ```c++
 void loop(){
   if((lineFollowFlag == HIGH) && (irPairsFollowObjectFlag == LOW) && (lockFlag == LOW)){
